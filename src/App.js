@@ -1,31 +1,37 @@
-import Row from "./Componets/Row/Row"
-import requests from './requests'
+import Header from "Componets/Header/Header"
+
+import { publicRoutes } from "Router/Router"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Profile from "Page/Profile"
+
+
 
 
 
 function App() {
   return (
-    <div className="min-h-screen  bg-gradient-to-b  font-Roboto from-gray-900 to-transparent">
-      <header className="flex h-10 fixed top-0  px-5  justify-between items-center w-full bg-gray-900/40 shadow-lg shadow-gray-700/10 ">
-        <div className=" text-[18px] flex h-full items-center ">
-          <h1 className="text-red-600 font-[900]">PHIMVIP</h1>
 
-          <div className="sm:flex text-white hidden  h-full text-[14px] ml-3  ">
-            <button className="hover:bg-gray-400/10 px-3  rounded-sm" >Tìm kiếm</button>
-            <button className="hover:bg-gray-400/10 px-3  rounded-sm">Phim hot</button>
-            <button className="hover:bg-gray-400/10 px-3  rounded-sm">Phim lẻ</button>
-            <button className="hover:bg-gray-400/10 px-3  rounded-sm">Phim bộ</button>
-          </div>
-        </div>
-        <button className='text-[14px] bg-red-600 text-white p-1 rounded-sm'>Đăng nhập</button>
-      </header>
 
-      <div className="px-[15px] lg:px-[100px] mt-16">
-        <Row title='Trending' fetchUrl={requests.fetchTrending} />
-        <Row title='TopRated' fetchUrl={requests.fetchNetflixOriginals} />
-        <Row title='Netflix' fetchUrl={requests.fetchNetflixOriginals} />
-      </div>
+    <div className="min-h-screen  text-white bg-gradient-to-b  font-Roboto from-gray-900 to-transparent">
+
+      <Header />
+      <Routes>
+
+        {
+          publicRoutes.map((route, index) => {
+            const Page = route.component
+            return <Route key={index} path={route.path} element={<Page />} />
+          })
+        }
+
+
+
+
+      </Routes>
+     
+
     </div>
+
   )
 }
 

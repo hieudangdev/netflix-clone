@@ -1,6 +1,6 @@
 
-const apiKey = '555dd368605c297c15840de44d6429b9'
-
+export const apiKey = '555dd368605c297c15840de44d6429b9'
+export const posterBaseUrl = 'https://image.tmdb.org/t/p/original'
 const requests = {
     fetchTrending: `/trending/all/week?api_key=${apiKey}&language=en-US`,
     fetchNetflixOriginals: `/discover/tv?api_key=${apiKey}&witg_network=213`,
@@ -10,6 +10,7 @@ const requests = {
     fetchHorrorMovies: `/discover/movie?api_key=${apiKey}&with_genres=27`,
     fetchRomanceMovies: `/discover/movie?api_key=${apiKey}&with_genres=10749`,
     fetchDocumentaries: `/discover/movie?api_key=${apiKey}&with_genres=99`,
+
 }
 
 export default requests

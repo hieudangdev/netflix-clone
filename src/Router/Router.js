@@ -6,6 +6,7 @@ const routes = {
     home: '/',
     following: '/following',
     profile: '/movie/:id',
+    profileLink: (id) => `/movie/${id}`,
     upload: '/upload',
 
 

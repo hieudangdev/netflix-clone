@@ -3,6 +3,7 @@ import Header from "Componets/Header/Header"
 import { publicRoutes } from "Router/Router"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Profile from "Page/Profile"
+import Footer from "Componets/Footer/Footer"
 
 
 
@@ -23,12 +24,9 @@ function App() {
             return <Route key={index} path={route.path} element={<Page />} />
           })
         }
-
-
-
-
       </Routes>
-     
+      <Footer />
+
 
     </div>
 

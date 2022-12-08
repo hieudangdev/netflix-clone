@@ -1,0 +1,29 @@
+{
+    "name": "express",
+    "version": "1.0.0",
+    "description": "Express lession ",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --inspect index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Captaitndev/Express-f8.git"
+    },
+    "keywords": [
+        "f8-express"
+    ],
+    "author": "Hieudev",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Captaitndev/Express-f8/issues"
+    },
+    "homepage": "https://github.com/Captaitndev/Express-f8#readme",
+    "dependencies": {
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
+}

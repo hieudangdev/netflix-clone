@@ -17,13 +17,13 @@ function App() {
 
       <Header />
       <Routes>
-
         {
           publicRoutes.map((route, index) => {
             const Page = route.component
             return <Route key={index} path={route.path} element={<Page />} />
           })
         }
+
       </Routes>
       <Footer />
 

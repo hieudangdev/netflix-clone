@@ -18,9 +18,9 @@ function Row({ movie }) {
                     <img src={posterBaseUrl + movie.poster_path} className=' w-full  h-full  object-cover' alt='movie' />
                 </div>
                 <div className='p-2'>
-                    <div>{movie.id}</div>
-                    <div className="text-[13px] text-[#dbdbd] mt-1 ">{movie.title || movie.name}</div>
-                    <div className="text-[10px] font-extralight ]">{movie.title || movie.original_name}</div>
+
+                    <div className="text-[16px] text-[#dbdbd] mt-1 ">{movie.title || movie.name}</div>
+                    <div className="text-[12px] font-extralight ]">{movie.title || movie.original_name}</div>
                 </div>
             </button>
 

@@ -18,15 +18,16 @@ function Profile() {
     console.log(infoMovies)
 
     return (
-        <div className=' text-white relative'>
-            <img className='transition-all opacity-30  h-full w-full object-cover' src={posterBaseUrl + infoMovies.backdrop_path} alt='' />
-            <div className='absolute  w-full top-[60px] '>
-                <div className='ml-[100px] flex'>
-                    <div className=' shadow-md  overflow-hidden '>
-                        <img className='h-[300px] rounded-md  w-[270px] object-cover' src={posterBaseUrl + infoMovies.poster_path} alt='' />
-                        <button className='p-[6px] bg-red-600 w-full rounded-sm mt-6 hover:opacity-80'>Xem Phim</button>
+        <div className=' text-white  relative '>
+            <img className='transition-all opacity-30 mb-[800px] lg:mb-0 h-full w-full object-fill' src={posterBaseUrl + infoMovies.backdrop_path} alt='' />
+
+            <div className='absolute  w-full right-2 left-2 top-[80px] z-50'>
+                <div className=' grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-x-2'>
+                    <div className=' shadow-md    '>
+                        <img className='block w-[full] p-5 object-cover' src={posterBaseUrl + infoMovies.poster_path} alt='' />
+                        <button className='p-2 bg-red-600 w-full rounded-sm  hover:opacity-80'>Xem Phim</button>
                     </div>
-                    <div className='ml-[25px] pt-2 leading-8 text-white mr-[40px] w-full   '>
+                    <div className='leading-8 mt-5 p-3 lg:col-span-3  text-white w-full   '>
                         <div className=' text-[35px]'>{infoMovies.original_title}</div>
                         <div className=' text-[18px] text-white/70 '>{infoMovies.original_title}</div>
                         <div className='text-[14px] text-white/70'>

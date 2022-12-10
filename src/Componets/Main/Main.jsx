@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 
 function Main({ title, fetchUrl }) {
     const [Movies, setMovies] = useState([])
-    let { id } = useParams()
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -18,7 +17,7 @@ function Main({ title, fetchUrl }) {
     return (
         <div className='w-full'>
             <h2 className='my-6 leading-9 border-b border-gray-700 '>{title}</h2>
-            <div className='grid grid-cols-4  md:grid-cols-3 lg:grid-cols-4  gap-2 lg:gap-4 '>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-2 lg:gap-4 '>
                 {Movies.map((movie) => {
                     return (
                         <div key={movie.id} className=' '>

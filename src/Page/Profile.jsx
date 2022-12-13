@@ -19,7 +19,7 @@ function Profile() {
 
     return (
         <div className=' text-white  relative '>
-            <img className='transition-all opacity-30 mb-[800px] lg:mb-0 h-full w-full object-fill' src={posterBaseUrl + infoMovies.backdrop_path} alt='' />
+            <img className='transition-all opacity-30 mb-[1000px] lg:mb-0 h-full w-full object-fill' src={posterBaseUrl + infoMovies.backdrop_path} alt='' />
 
             <div className='absolute  w-full right-2 left-2 top-[80px] z-30'>
                 <div className=' grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-x-2'>

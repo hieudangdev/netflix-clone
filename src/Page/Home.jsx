@@ -5,7 +5,7 @@ import requests from 'requests'
 
 function Home() {
     return (
-        <div className='px-[15px] pb-[200px] lg:px-[100px] mt-16'>
+        <div className=' px-[15px] mt-16 lg:px-[100px] ]'>
             <Main title='Trending' fetchUrl={requests.fetchActionMovies} />
             <Main title='Netflix' fetchUrl={requests.fetchNetflixOriginals} />
         </div>

@@ -12,20 +12,11 @@ function Main({ title, fetchUrl }) {
             setMovies(request.data.results.slice(0, 8))
         }
         fetchApi()
-    }, [])
+    }, [fetchUrl])
 
     return (
         <div className='w-full'>
-            <h2 className='my-6 leading-9 border-b border-gray-700 '>{title}</h2>
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-2 lg:gap-4 '>
-                {Movies.map((movie) => {
-                    return (
-                        <div key={movie.id} className=' '>
-                            <Row movie={movie} />
-                        </div>
-                    )
-                })}
-            </div>
+            <Row dataMovies={Movies} title={title} />
         </div>
     )
 }

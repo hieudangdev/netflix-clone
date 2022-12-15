@@ -13,18 +13,20 @@ function App() {
   return (
 
 
-    <div className="min-h-screen  text-white bg-gradient-to-b  font-Roboto from-gray-900 to-transparent">
+    <div className="min-h-screen  text-white bg-gradient-to-b font-semibold  font-Roboto from-gray-900 to-transparent">
 
       <Header />
-      <Routes>
-        {
-          publicRoutes.map((route, index) => {
-            const Page = route.component
-            return <Route key={index} path={route.path} element={<Page />} />
-          })
-        }
+      <div className=' pb-[200px] lg:pb-[100px] pt-8'>
+        <Routes>
+          {
+            publicRoutes.map((route, index) => {
+              const Page = route.component
+              return <Route key={index} path={route.path} element={<Page />} />
+            })
+          }
 
-      </Routes>
+        </Routes>
+      </div>
       <Footer />
 
 

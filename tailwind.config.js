@@ -9,8 +9,10 @@ module.exports = {
         "Roboto": ["Roboto"],
       },
       colors: {
-        '"blue- 900"': '#41e30'
-      }
+        "title": "#ff7420",
+
+      },
+
 
     },
 

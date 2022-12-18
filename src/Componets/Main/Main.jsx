@@ -13,6 +13,7 @@ function Main({ title, fetchUrl }) {
         }
         fetchApi()
     }, [fetchUrl])
+    
 
     return (
         <div className='w-full'>

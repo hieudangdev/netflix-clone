@@ -1,7 +1,6 @@
 import Row from 'Componets/Row/Row'
 import instance from 'instance'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 
 function Main({ title, fetchUrl }) {
     const [Movies, setMovies] = useState([])
@@ -13,7 +12,6 @@ function Main({ title, fetchUrl }) {
         }
         fetchApi()
     }, [fetchUrl])
-    
 
     return (
         <div className='w-full'>

@@ -13,7 +13,7 @@ function Movies() {
             setMovies(request.data.results)
         }
         fetchApi()
-    }, [requests.fetchTrending])
+    }, [])
 
     return (
         <div className=' px-[15px] mt-16 lg:px-[100px]'>

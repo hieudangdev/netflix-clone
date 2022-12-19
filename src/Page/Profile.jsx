@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -8,11 +8,15 @@ import { IMDb } from 'Assets/icon'
 import Images from 'Componets/Image/Images'
 import instance from 'instance'
 import { apiKey, posterBaseUrl } from 'requests'
+import Row from 'Componets/Row/Row'
+import { routes } from 'Router/Router'
 
 function Profile() {
     let { id } = useParams()
     const [infoMovies, setinfoMovies] = useState([])
     const [infoCast, setinfoCast] = useState([])
+    const [MoreMovies, setMoreMovies] = useState([])
+    console.log(MoreMovies)
     useEffect(() => {
         const fetchApi = async () => {
             const request = await instance.get(`movie/${id}?api_key=${apiKey}`)
@@ -22,7 +26,12 @@ function Profile() {
             const request = await instance.get(`movie/${id}/casts?api_key=${apiKey}`)
             setinfoCast(request.data.cast.slice(0, 20))
         }
+        const fetchApiMore = async () => {
+            const request = await instance.get(`movie/${id}/similar?api_key=${apiKey}`)
+            setMoreMovies(request.data.results.slice(0, 10))
+        }
         fetchApiCast()
+        fetchApiMore()
         fetchApi()
     }, [id])
     const settings = {
@@ -38,21 +47,20 @@ function Profile() {
                     slidesToShow: 4,
                     slidesToScroll: 4,
                     infinite: true,
-                    dots: false,
                 },
             },
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                 },
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
                 },
             },
         ],
@@ -92,7 +100,7 @@ function Profile() {
                         </div>
                         <div className='text-[14px] text-white/70 '>{infoMovies.overview}</div>
 
-                        <Slider {...settings} className=''>
+                        <Slider {...settings} className='lg:ml-10 lg:mr-[200px] mx-[40px] mt-10'>
                             {infoCast.map((cast, index) => {
                                 return (
                                     <div key={index} className=' mx-2 inline-block'>
@@ -104,6 +112,35 @@ function Profile() {
                         </Slider>
                     </div>
                 </div>
+            </div>
+            <div className='lg:mx-[150px]    '>
+                <h2 className='mt-12 mb-4  leading-9 border-b border-gray-700 text-title font-semibold text-[20px] uppercase'>Phim tương tự</h2>
+
+                <Slider {...settings} className='m-14  '>
+                    {MoreMovies.map((movie, index) => {
+                        return (
+                            <Link to={routes.profileLink(movie.id)} key={index}>
+                                <button
+                                    onClick={() => routes.profileLink(movie.id)}
+                                    className='relative bg-[#0a0f1a] font-medium  shadow-lg mx-2  lg:hover:opacity-80 overflow-hidden
+                               rounded-lg'
+                                >
+                                    <div className=' absolute top-0 ml-4 w-[20px] bg-red-600 text-center rounded-b-md   pt-1 font-[700] h-8  text-white text-[6px] '>
+                                        IMDB
+                                        <div className='text-[10px] '>{Math.floor(movie.vote_average)}</div>
+                                    </div>
+                                    <div className=' h-auto max-w-full'>
+                                        <Images src={posterBaseUrl + movie.poster_path} className=' w-full  h-full  object-cover' alt='movie' />
+                                    </div>
+                                    <div className='p-3 text-start  overflow-hidden'>
+                                        <div className='text-[16px]'>{movie.title || movie.name}</div>
+                                        <div className='text-[13px] text-gray-400 '>{movie.title || movie.original_name}</div>
+                                    </div>
+                                </button>
+                            </Link>
+                        )
+                    })}
+                </Slider>
             </div>
         </div>
     )

@@ -1,3 +1,4 @@
+import Search from 'Componets/Header/Search/Search'
 import Row from 'Componets/Row/Row'
 import instance from 'instance'
 import React, { useEffect, useState } from 'react'
@@ -5,10 +6,9 @@ import { useParams } from 'react-router-dom'
 import { apiKey } from 'requests'
 
 function SearchPage() {
-    let { id, q } = useParams()
+    let { q } = useParams()
     const [searchMovies, setsearchMovies] = useState([])
 
-    console.log(searchMovies)
     useEffect(() => {
         setsearchMovies([])
         window.scrollTo(0, 0)
@@ -21,8 +21,10 @@ function SearchPage() {
     }, [q])
 
     return (
-        <div className='px-[15px] pb-[200px] lg:px-[100px] mt-16 lg:mt-[100px]'>
-            <Row dataMovies={searchMovies} />
+        <div className='px-[15px] pb-[200px] lg:px-[100px] mt-[40px] lg:mt-[100px]'>
+            <Search className='lg:hidden relative w-full h-10 rounded-full bg-gray-700/50 overflow-hidden' />
+
+            <Row dataMovies={searchMovies} title={`Kết quả tìm kiếm của ${q}`} />
         </div>
     )
 }

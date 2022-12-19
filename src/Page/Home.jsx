@@ -1,5 +1,4 @@
 import Main from 'Componets/Main/Main'
-import Row from 'Componets/Row/Row'
 import React from 'react'
 import requests from 'requests'
 

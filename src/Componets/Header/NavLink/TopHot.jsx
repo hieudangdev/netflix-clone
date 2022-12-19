@@ -13,7 +13,7 @@ function TopHot() {
             setMovies(request.data.results)
         }
         fetchApi()
-    }, [requests.fetchTopRated])
+    }, [])
 
     return (
         <div className=' px-[15px] mt-16 lg:px-[100px]'>

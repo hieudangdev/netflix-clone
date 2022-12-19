@@ -1,19 +1,23 @@
+import { SearchIcon } from 'Assets/icon'
 import Search from 'Componets/Header/Search/Search'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { routes } from 'Router/Router'
 
 function Header() {
-    const [show, setshow] = useState(false)
-    console.log(show)
+    const [showMenu, setshowMenu] = useState(false)
+
     return (
-        <header className='flex h-14  fixed top-0  z-50 px-5   justify-between  items-center w-full bg-gray-900/40 shadow-lg shadow-gray-700/10 '>
+        <header
+            className='flex h-12  fixed top-0  z-50 px-5   justify-between  items-center  w-full bg-gray-900/40 shadow-lg shadow-gray-700/10 
+        '
+        >
             <div className=' text-[18px] lg:text-[24px] flex h-full uppercase items-center '>
                 <Link to={routes.home} className='text-red-600 font-[900] cursor-pointer '>
                     PHIMVIP
                 </Link>
 
-                <div className={`hidden sm:flex text-white   h-full text-[15px] ml-3  `}>
+                <div className={`hidden lg:flex text-white   h-full text-[15px] ml-3  `}>
                     <Link to={routes.top} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
                         <div>Phim Hot</div>
                     </Link>
@@ -25,15 +29,22 @@ function Header() {
                     </Link>
                 </div>
             </div>
-            <button className='cursor-default px-6  '>
-                <Search />
-            </button>
 
-            <div>
+            <div className='inline-flex  '>
+                <div className='  hidden lg:flex'>
+                    <Search className=' relative w-[300px]  h-9 rounded-full bg-gray-700/50 overflow-hidden' />
+
+                    <button className='hidden lg:block ml-5 text-[14px] bg-red-600 text-white p-2 rounded-sm'>Đăng nhập</button>
+                </div>
+
+                <Link to={routes.searchLink}>
+                    <SearchIcon className='lg:hidden w-5 h-14  text-gray-500 dark:text-gray-400' />
+                </Link>
+
                 <button
                     type='button'
-                    onClick={() => setshow(!show)}
-                    className='inline-flex relative items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+                    onClick={() => setshowMenu(!showMenu)}
+                    className='relative items-center px-3 ml-4  text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
                 >
                     <svg aria-hidden='true' className='w-6 h-6' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -43,7 +54,11 @@ function Header() {
                         ></path>
                     </svg>
                 </button>
-                <ul className={`${show ? 'absolute' : 'hidden'} text-white text-[14px] w-[200px] min-h-[50px] right-1 pt-2 shadow-lg rounded-xl top-14 content-none   bg-gray-900/90`}>
+
+                <ul
+                    onClick={() => setshowMenu(!showMenu)}
+                    className={`${showMenu ? 'absolute' : 'hidden'} text-white text-[14px] w-[200px] min-h-[50px] right-1 pt-2 shadow-lg rounded-xl top-14 content-none   bg-gray-900/90`}
+                >
                     <Link to={routes.top}>
                         <li className=' h-10 content-center  px-4 border-b border-b-gray-600/20 leading-10 align-middle'>Phim Hot</li>
                     </Link>
@@ -57,9 +72,6 @@ function Header() {
                         <li className=' h-10 content-center  px-4 border-b border-b-gray-600/20 leading-10 align-middle  '>Đăng nhập</li>
                     </Link>
                 </ul>
-            </div>
-            <div className=' lg:inline-block '>
-                <button className='hidden lg:inline-block text-[14px] bg-red-600 text-white p-2 rounded-sm'>Đăng nhập</button>
             </div>
         </header>
     )

@@ -1,6 +1,7 @@
 
 export const apiKey = '555dd368605c297c15840de44d6429b9'
 export const posterBaseUrl = 'https://image.tmdb.org/t/p/original'
+export const posterLargeUrl = 'https://image.tmdb.org/t/p/w500/'
 const requests = {
 
     fetchTrending: `/trending/all/week?api_key=${apiKey}&language=en-US`,

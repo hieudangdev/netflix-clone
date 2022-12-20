@@ -1,7 +1,7 @@
 import { SearchIcon } from 'Assets/icon'
 import Search from 'Componets/Header/Search/Search'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { routes } from 'Router/Router'
 
 function Header() {
@@ -18,15 +18,15 @@ function Header() {
                 </Link>
 
                 <div className={`hidden lg:flex text-white   h-full text-[15px] ml-3  `}>
-                    <Link to={routes.top} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
+                    <NavLink to={routes.top} className='hover:bg-gray-400/10  px-4 leading-[56px] '>
                         <div>Phim Hot</div>
-                    </Link>
-                    <Link to={routes.movies} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
+                    </NavLink>
+                    <NavLink to={routes.movies} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
                         <div>Phim lẻ</div>
-                    </Link>
-                    <Link to={routes.tv} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
+                    </NavLink>
+                    <NavLink to={routes.tv} className='hover:bg-gray-400/10 px-4 leading-[56px] '>
                         <div>Phim bộ</div>
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
 
@@ -37,8 +37,10 @@ function Header() {
                     <button className='hidden lg:block ml-5 text-[14px] bg-red-600 text-white p-2 rounded-sm'>Đăng nhập</button>
                 </div>
 
-                <Link to={routes.searchLink}>
-                    <SearchIcon className='lg:hidden w-5 h-14  text-gray-500 dark:text-gray-400' />
+                <Link to={routes.search}>
+                    <button className='p-2 px-4'>
+                        <SearchIcon className='lg:hidden block  w-5 h-14 text-gray-500 dark:text-gray-400' />
+                    </button>
                 </Link>
 
                 <button

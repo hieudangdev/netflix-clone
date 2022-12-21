@@ -10,9 +10,6 @@ function SearchPage() {
     const [searchMovies, setsearchMovies] = useState([])
 
     useEffect(() => {
-        setsearchMovies([])
-        window.scrollTo(0, 0)
-
         const fetchApi = async () => {
             const request = await instance.get(`search/movie?api_key=${apiKey}&language=en-US&query=${q}&page=1&include_adult=false`)
             setsearchMovies(request.data.results)
@@ -24,7 +21,7 @@ function SearchPage() {
         <div className='px-[15px] pb-[200px] lg:px-[100px] mt-[40px] lg:mt-[100px]'>
             <Search className='lg:hidden relative w-full h-10 rounded-full bg-gray-700/50 overflow-hidden' />
 
-            <Row dataMovies={searchMovies} title={`Kết quả tìm kiếm của ${q}`} />
+            <Row dataMovies={searchMovies} title={`Kết quả`} />
         </div>
     )
 }

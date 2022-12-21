@@ -15,7 +15,7 @@ function App() {
     <div className="min-h-screen  text-white bg-gradient-to-b font-semibold  font-Roboto from-gray-900 to-transparent">
 
       <Header />
-      <div className=' pb-[200px] lg:pb-[100px] pt-8'>
+      <div className=' pb-[200px] lg:pb-[100px] '>
         <Routes>
           {
             publicRoutes.map((route, index) => {

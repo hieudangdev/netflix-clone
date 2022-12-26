@@ -3,18 +3,15 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply bg-gray-900;
-    }
-    ::-webkit-scrollbar {
-        display: none;
-    }
+   body {
+      @apply bg-gray-900;
+   }
+   ::-webkit-scrollbar {
+      display: none;
+   }
 
-    .example {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-    .active {
-        @apply text-title;
-    }
+   .example {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+   }
 }

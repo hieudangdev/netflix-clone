@@ -1,8 +1,8 @@
-import { SearchIcon } from 'Assets/icon';
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from 'Router/Router';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Search({ className }) {
    const navigate = useNavigate();
@@ -21,7 +21,7 @@ function Search({ className }) {
                }}
                onChange={(e) => setsearchValue(e.target.value.trim())}
                value={searchValue}
-               className='block  h-full w-full bg-transparent p-4 pr-10 text-base font-normal text-white rounded-full outline-none '
+               className='block  h-full w-full rounded-full bg-transparent p-4 pr-10 text-base font-normal text-white outline-none '
                placeholder='Search Movies'
             />
             <Link to={routes.searchLink(searchValue)}>
@@ -29,7 +29,7 @@ function Search({ className }) {
                   onClick={() => setsearchValue('')}
                   className='absolute inset-y-0 right-0 flex items-center p-3 hover:bg-slate-600 '
                >
-                  <SearchIcon className='w-5 h-5 text-gray-500  bg-transparent dark:text-gray-400' />
+                  <SearchIcon color='primary' />
                </div>
             </Link>
          </div>

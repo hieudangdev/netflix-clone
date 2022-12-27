@@ -27,22 +27,27 @@ function Header() {
          title: 'Phim Bộ',
          link: routes.tv,
       },
+      {
+         tabindex: 4,
+         title: 'Tìm kiếm',
+         link: routes.search,
+      },
    ];
 
    return (
       <header
-         className='flex h-12  fixed top-0  z-50 px-5   justify-between  items-center  w-full bg-gray-900/40 shadow-lg shadow-gray-700/10 
+         className='fixed top-0  z-50 flex  h-12 w-full   items-center  justify-between  bg-gray-900/40 px-5 shadow-lg shadow-gray-700/10 
         '
       >
-         <div className=' text-[18px] lg:text-[24px] flex h-full uppercase items-center '>
+         <div className=' flex h-full items-center text-[18px] uppercase lg:text-[24px] '>
             <div className='lg:hidden'>
                <DrawerComp pages={navheader} />
             </div>
-            <Link to={routes.home} className='flex flex-grow justify-center text-red-600 font-[900] cursor-pointer '>
+            <Link to={routes.home} className='flex flex-grow cursor-pointer justify-center font-[900] text-red-600 '>
                PHIMVIP
             </Link>
 
-            <div className='hidden lg:block  ml-5'>
+            <div className='ml-5 hidden  lg:flex'>
                {navheader.map((nav, index) => (
                   <NavLink key={index} to={nav.link} className={`px-4 text-[16px] font-medium `}>
                      <button className=' tracking-widest'> {nav.title}</button>
@@ -53,21 +58,16 @@ function Header() {
 
          <div className='inline-flex'>
             <div className=' flex'>
-               <NavLink to={routes.search}>
-                  <SearchIcon className='mx-2 py-2' width={20} />
-               </NavLink>
-               <Search className=' hidden lg:flex relative w-[300px]  h-9 rounded-full bg-gray-700/50 overflow-hidden' />
                <Button
                   variant='outlined'
-                  size='small'
                   sx={{
-                     color: 'red',
+                     borderRadius: '4px',
+                     color: 'white',
+                     backgroundColor: 'red',
                      borderColor: 'red',
-                     padding: '2px',
                      fontSize: '12px',
                      marginRight: '-10px',
                   }}
-                  className='lg:block lg:ml-5 text-[14px] bg-transparent border border-red-600  text-red-600 p-1 -mr-3 rounded-md'
                >
                   Login
                </Button>

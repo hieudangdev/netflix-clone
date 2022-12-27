@@ -11,6 +11,7 @@ function SearchPage() {
 
    useEffect(() => {
       const fetchApi = async () => {
+         setsearchMovies([]);
          const request = await instance.get(
             `search/movie?api_key=${apiKey}&language=en-US&query=${q}&page=1&include_adult=false`,
          );
@@ -20,8 +21,8 @@ function SearchPage() {
    }, [q]);
 
    return (
-      <div className='px-[15px] pb-[200px] lg:px-[100px] mt-[60px] lg:mt-[100px]'>
-         <Search className='lg:hidden relative w-full h-10 rounded-full bg-gray-700/50 overflow-hidden' />
+      <div className='mt-[60px] px-[15px] pb-[200px] lg:mt-[100px] lg:px-[120px]'>
+         <Search className=' relative h-10 w-full overflow-hidden rounded-lg bg-gray-700/50' />
 
          <Row dataMovies={searchMovies} title={`Kết quả`} />
       </div>

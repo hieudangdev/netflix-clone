@@ -12,6 +12,8 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { routes } from 'Router/Router';
 const DrawerComp = ({ pages }) => {
    const [openDrawer, setOpenDrawer] = useState(false);
    const [selectedIndex, setSelectedIndex] = useState(0);
@@ -31,7 +33,9 @@ const DrawerComp = ({ pages }) => {
             open={openDrawer}
             onClose={() => setOpenDrawer(false)}
          >
-            <button className='w-full py-2 font-extrabold text-red-500  text-[18px] '>PHIMVIP</button>
+            <Link to={routes.home}>
+               <button className='w-full py-2 text-[18px] font-extrabold  text-red-500 '>PHIMVIP</button>
+            </Link>
             <Divider />
             <List disablePadding>
                {pages.map((page, index) => (
@@ -46,6 +50,7 @@ const DrawerComp = ({ pages }) => {
                         },
                      }}
                      LinkComponent={NavLink}
+                     href={page.link}
                      selected={selectedIndex === page.tabindex}
                      onClick={() => setSelectedIndex(page.tabindex)}
                   >

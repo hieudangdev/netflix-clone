@@ -43,28 +43,30 @@ const DrawerComp = ({ pages }) => {
                      key={index}
                      sx={{
                         '&.Mui-selected': {
-                           backgroundColor: '#2e8b57',
+                           backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                           color: 'orange',
                         },
                         '&.Mui-focusVisible': {
-                           backgroundColor: '#2e8b57',
+                           backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                           color: 'orange',
                         },
                      }}
-                     LinkComponent={NavLink}
-                     href={page.link}
                      selected={selectedIndex === page.tabindex}
                      onClick={() => setSelectedIndex(page.tabindex)}
                   >
-                     <ListItemIcon>
-                        <ListItemText
-                           sx={{ my: 0, color: 'white' }}
-                           primary={page.title}
-                           primaryTypographyProps={{
-                              fontSize: 18,
-                              fontWeight: 'medium',
-                              letterSpacing: 1,
-                              pt: 1,
-                           }}
-                        />
+                     <ListItemIcon sx={{ color: 'inherit' }}>
+                        <Link to={page.link}>
+                           <ListItemText
+                              sx={{ my: 0 }}
+                              primary={page.title}
+                              primaryTypographyProps={{
+                                 fontSize: 18,
+                                 fontWeight: 'medium',
+                                 letterSpacing: 1,
+                                 pt: 1,
+                              }}
+                           />
+                        </Link>
                      </ListItemIcon>
                   </ListItemButton>
                ))}

@@ -9,16 +9,26 @@ import instance from 'instance';
 import { apiKey, posterBaseUrl } from 'requests';
 import MoreMovies from 'Componets/Profile/MoreMovies';
 import SlickCast from 'Componets/Profile/SlickCast';
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import UpdateIcon from '@mui/icons-material/Update';
 import HoverRow from './../Componets/Row/HoverRow';
+import Ratings from './../Componets/Row/Ratings';
 
 function Profile() {
    let { id } = useParams();
    const [infoMovies, setinfoMovies] = useState([]);
    const [genMovies, setgenMovies] = useState([]);
+   const [infoCast, setinfoCast] = useState([]);
+
+   useEffect(() => {
+      const fetchApiCast = async () => {
+         const request = await instance.get(`movie/${id}/casts?api_key=${apiKey}&language=en-US`);
+         setinfoCast(request.data.cast.slice(0, 10));
+      };
+      fetchApiCast();
+   }, [id]);
 
    useEffect(() => {
       const fetchApi = async () => {
@@ -52,12 +62,10 @@ function Profile() {
                   </div>
                </div>
                <div className='relative col-span-3 mt-5 w-full p-3 leading-8  text-white lg:col-span-3 lg:mt-0   '>
-                  <div className=' text-[35px]'>{infoMovies?.original_title}</div>
-                  <div className=' text-[18px] '>{infoMovies?.original_title}</div>
+                  <div className=' text-[45px]'>{infoMovies?.original_title}</div>
+                  <div className=' mt-2 text-[20px] '>{infoMovies?.original_title}</div>
                   <div className='flex lg:mt-4 '>
-                     <IMDb className='mr-2 h-[30px] w-[30px]' />
-
-                     <HoverRow value={infoMovies?.vote_average} size={40} />
+                     <Ratings value={infoMovies?.vote_average} color='success' size={40} />
                   </div>
                   <div className='text-[16px] '>
                      <UpdateIcon color='success' />
@@ -88,7 +96,7 @@ function Profile() {
                         </Button>
                      ))}
                   </div>
-                  <SlickCast />
+                  <SlickCast infoCast={infoCast} />
                </div>
             </div>
          </div>

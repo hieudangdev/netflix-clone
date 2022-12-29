@@ -19,6 +19,7 @@ function SearchPage() {
       };
       fetchApi();
    }, [q]);
+   console.log(searchMovies);
 
    return (
       <div className='mt-[60px] px-[15px] pb-[200px] lg:mt-[100px] lg:px-[120px]'>

@@ -25,11 +25,6 @@ function Row({ dataMovies = [], title }) {
                         <Link to={routes.profileLink(movie?.id)} key={movie?.id} >
                             <Box className='relative bg-[#0a0f1a]  group  font-medium shadow-2xl lg:hover:scale-[1.05] overflow-hidden
                            rounded-lg '>
-
-
-                                <div className=" absolute top-0 ml-4 w-[20px] bg-red-600 text-center rounded-b-md   pt-1 font-[700] h-8  text-white text-[6px] ">IMDB
-                                    <div className='text-[10px] '>{Math.floor(movie?.vote_average)}</div>
-                                </div>
                                 <div className='relative h-auto group max-w-full'>
                                     <Images src={posterBaseUrl + movie?.poster_path} className=' w-full  h-full  object-cover' alt='movie?' />
                                     <HoverRow movie={movie} />

@@ -1,16 +1,11 @@
 import { Button } from '@mui/material';
-import { SearchIcon } from 'Assets/icon';
-import Search from 'Componets/Header/Search/Search';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { routes } from 'Router/Router';
-import DrawerNav from './DrawerComp';
-import AddBusinessRoundedIcon from '@mui/icons-material/AddBusinessRounded';
 import './header.css';
 import DrawerComp from './DrawerComp';
 
 function Header() {
-   const [showMenu, setshowMenu] = useState(false);
    const navheader = [
       {
          tabindex: 1,

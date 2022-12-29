@@ -15,6 +15,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import UpdateIcon from '@mui/icons-material/Update';
 import HoverRow from './../Componets/Row/HoverRow';
 import Ratings from './../Componets/Row/Ratings';
+import { Fullscreen, Translate } from '@mui/icons-material';
 
 function Profile() {
    let { id } = useParams();
@@ -58,11 +59,23 @@ function Profile() {
                      />
                   </div>
                   <div className='w-full pt-4 '>
-                     <button className='w-full rounded-sm  bg-red-600 py-2  hover:opacity-80'>Xem phim</button>
+                     <Button
+                        variant='contained'
+                        sx={{
+                           width: 1,
+                           backgroundColor: 'red',
+                           color: 'white',
+                           ':hover': {
+                              backgroundColor: 'red',
+                           },
+                        }}
+                     >
+                        Xem phim
+                     </Button>
                   </div>
                </div>
                <div className='relative col-span-3 mt-5 w-full p-3 leading-8  text-white lg:col-span-3 lg:mt-0   '>
-                  <div className=' text-[45px]'>{infoMovies?.original_title}</div>
+                  <div className=' text-[45px]'>{infoMovies?.title}</div>
                   <div className=' mt-2 text-[20px] '>{infoMovies?.original_title}</div>
                   <div className='flex lg:mt-4 '>
                      <Ratings value={infoMovies?.vote_average} color='success' size={40} />
@@ -90,6 +103,12 @@ function Profile() {
                            sx={{
                               borderRadius: '50px',
                               marginRight: '15px',
+                              color: 'red',
+                              borderColor: 'red',
+                              ':hover': {
+                                 borderColor: 'white',
+                                 color: 'white',
+                              },
                            }}
                         >
                            {genre.name}

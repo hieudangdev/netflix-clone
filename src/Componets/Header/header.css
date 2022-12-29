@@ -1,3 +1,7 @@
+:root {
+   --redColor: 'rgb(220 38 38)';
+}
+
 .active {
    color: orange;
 }

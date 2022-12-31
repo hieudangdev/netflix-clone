@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import Images from 'Componets/Image/Images';
-import { posterBaseUrl } from 'requests';
+import tmdbConfigs from './../../api/Config/tmdb.config';
 
 function SlickCast({ infoCast }) {
    const sliderRef = useRef(null);
@@ -50,7 +50,7 @@ function SlickCast({ infoCast }) {
                      <div key={index} className='h-full w-full'>
                         <div className='h-[90px] w-[90px]'>
                            <Images
-                              src={posterBaseUrl + cast.profile_path}
+                              src={tmdbConfigs.posterPath(cast.profile_path)}
                               className='block h-full w-full rounded-full object-cover'
                            />
                         </div>

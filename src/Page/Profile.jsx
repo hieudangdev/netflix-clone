@@ -1,50 +1,56 @@
-import { Link, useParams } from 'react-router-dom';
-import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { IMDb } from 'Assets/icon';
-import Images from 'Componets/Image/Images';
-import instance from 'instance';
-import { apiKey, posterBaseUrl } from 'requests';
+import instance from 'api/Config/ClientApi';
 import MoreMovies from 'Componets/Profile/MoreMovies';
 import SlickCast from 'Componets/Profile/SlickCast';
-import { Button, Stack } from '@mui/material';
+import { Button } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import UpdateIcon from '@mui/icons-material/Update';
-import HoverRow from './../Componets/Row/HoverRow';
 import Ratings from './../Componets/Row/Ratings';
-import { Fullscreen, Translate } from '@mui/icons-material';
+import Images from 'Componets/Image/Images';
+import tmdbConfigs from './../api/Config/tmdb.config';
+import mediaApi from './../api/modules/mediaApi';
 
 function Profile() {
-   let { id } = useParams();
+   let { mediaType, mediaId } = useParams();
    const [infoMovies, setinfoMovies] = useState([]);
    const [genMovies, setgenMovies] = useState([]);
    const [infoCast, setinfoCast] = useState([]);
+   const apiKey = process.env.API_KEY;
 
    useEffect(() => {
       const fetchApiCast = async () => {
-         const request = await instance.get(`movie/${id}/casts?api_key=${apiKey}&language=en-US`);
-         setinfoCast(request.data.cast.slice(0, 10));
+         const request = await mediaApi.getCast({
+            mediaType,
+            mediaId,
+         });
+         setinfoCast(request.response.data.cast.slice(0, 10));
       };
       fetchApiCast();
-   }, [id]);
+   }, [mediaId]);
 
    useEffect(() => {
       const fetchApi = async () => {
-         const request = await instance.get(`movie/${id}?api_key=${apiKey}&language=en-US`);
-         setinfoMovies(request.data);
-         setgenMovies(request.data.genres);
+         const request = await mediaApi.getDetail({
+            mediaType,
+            mediaId,
+         });
+
+         setinfoMovies(request.response.data);
+         setgenMovies(request.response.data.genres);
       };
       fetchApi();
-   }, [id]);
+   }, [mediaId]);
 
    return (
       <div className=' relative text-white  '>
          <Images
             className='-z-30 h-auto w-full object-cover opacity-20 lg:mb-0'
-            src={posterBaseUrl + infoMovies?.backdrop_path}
+            src={tmdbConfigs.backdropPath(infoMovies.backdrop_path)}
             alt=''
          />
 
@@ -54,7 +60,7 @@ function Profile() {
                   <div className='overflow-hidden rounded-2xl shadow-2xl'>
                      <Images
                         className='block max-w-full   object-cover'
-                        src={posterBaseUrl + infoMovies?.poster_path}
+                        src={tmdbConfigs.posterPath(infoMovies?.poster_path)}
                         alt=''
                      />
                   </div>
@@ -94,20 +100,21 @@ function Profile() {
                   </div>
 
                   <div className='mt-2 text-[15px] text-white/80 '>{infoMovies?.overview}</div>
-                  <div className='mt-3 flex   '>
+                  <div className='mt-5 flex   '>
                      {genMovies.map((genre, index) => (
                         <Button
                            key={index}
                            variant='outlined'
                            size='small'
+                           color='primary'
                            sx={{
                               borderRadius: '50px',
                               marginRight: '15px',
-                              color: 'red',
-                              borderColor: 'red',
+                              // color: 'white',
+                              // borderColor: 'white',
                               ':hover': {
-                                 borderColor: 'white',
-                                 color: 'white',
+                                 borderColor: 'red',
+                                 color: 'red',
                               },
                            }}
                         >

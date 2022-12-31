@@ -1,21 +1,26 @@
 import Row from 'Componets/Row/Row';
-import instance from 'instance';
 import React, { useEffect, useState } from 'react';
+import mediaApi from './../../api/modules/mediaApi';
 
-function Main({ title, fetchUrl }) {
+function Main({ title, mediaType, mediaCategory }) {
    const [Movies, setMovies] = useState([]);
 
    useEffect(() => {
       const fetchApi = async () => {
-         const request = await instance.get(fetchUrl);
-         setMovies(request.data.results.slice(0, 10));
+         const request = await mediaApi.getList({
+            mediaType,
+            mediaCategory,
+            page: 1,
+         });
+         setMovies(request.response.data.results.slice(0, 10));
       };
       fetchApi();
-   }, [fetchUrl]);
+   }, [mediaType, mediaCategory]);
 
+   console.log(Movies);
    return (
       <div className='w-full'>
-         <Row dataMovies={Movies} title={title} />
+         <Row dataMovies={Movies} mediaType={mediaType} title={title} />
       </div>
    );
 }

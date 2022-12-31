@@ -2,15 +2,15 @@ import { Button } from '@mui/material'
 import Images from 'Componets/Image/Images'
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { posterBaseUrl } from 'requests'
 import { routes } from 'Router/Router'
 import HoverRow from './HoverRow'
 import { Box } from '@mui/material'
+import tmdbConfigs from './../../api/Config/tmdb.config'
 
 
 
 
-function Row({ dataMovies = [], title }) {
+function Row({ dataMovies = [], title, mediaType }) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -22,11 +22,11 @@ function Row({ dataMovies = [], title }) {
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 '>
                 {dataMovies?.map((movie, index) => {
                     return (
-                        <Link to={routes.profileLink(movie?.id)} key={movie?.id} >
+                        <Link to={routes.detailLink(mediaType, movie?.id)} key={index} >
                             <Box className='relative bg-[#0a0f1a]  group  font-medium shadow-2xl lg:hover:scale-[1.05] overflow-hidden
                            rounded-lg '>
                                 <div className='relative h-auto group max-w-full'>
-                                    <Images src={posterBaseUrl + movie?.poster_path} className=' w-full  h-full  object-cover' alt='movie?' />
+                                    <Images src={tmdbConfigs.posterPath(movie.poster_path)} className=' w-full  h-full  object-cover' alt='movie?' />
                                     <HoverRow movie={movie} />
                                 </div>
                                 <div className='p-3 text-start overflow-hidden'>
@@ -40,7 +40,7 @@ function Row({ dataMovies = [], title }) {
                 }
             </div >
             <div className='flex justify-end  mt-4 '>
-                <Button variant='outlined' size='small' href={routes.movies} className='text-title'  > View more... </Button></div>
+                <Button variant='outlined' size='small' href={routes.movies} className='text-red-600 border-red-600'  > View more... </Button></div>
 
         </div >
     )

@@ -5,30 +5,31 @@ import { routes } from 'Router/Router';
 import './header.css';
 import DrawerComp from './DrawerComp';
 
-function Header() {
-   const navheader = [
-      {
-         tabindex: 1,
-         title: 'Phim Hot',
-         link: routes.top,
-      },
-      {
-         tabindex: 2,
-         title: 'Phim lẻ',
-         link: routes.movies,
-      },
-      {
-         tabindex: 3,
-         title: 'Phim Bộ',
-         link: routes.tv,
-      },
-      {
-         tabindex: 4,
-         title: 'Tìm kiếm',
-         link: routes.search,
-      },
-   ];
+import SearchIcon from '@mui/icons-material/Search';
+export const navheader = [
+   {
+      tabindex: 1,
+      title: 'Top Rate',
+      link: routes.top,
+   },
+   {
+      tabindex: 2,
+      title: 'Now Playing',
+      link: routes.movies,
+   },
+   {
+      tabindex: 3,
+      title: 'Up Coming',
+      link: routes.tv,
+   },
+   {
+      tabindex: 4,
+      title: 'Tìm kiếm',
+      link: routes.search,
+   },
+];
 
+function Header() {
    return (
       <header
          className='fixed top-0  z-50 flex  h-12 w-full   items-center  justify-between  bg-gray-900/40 px-4 shadow-lg shadow-gray-700/10 
@@ -44,8 +45,8 @@ function Header() {
 
             <div className='ml-5 hidden  lg:flex'>
                {navheader.map((nav, index) => (
-                  <NavLink key={index} to={nav.link} className={`px-4 text-[16px] font-medium `}>
-                     <button className=' tracking-widest'> {nav.title}</button>
+                  <NavLink key={index} to={nav.link} className={`px-4 text-[17px] font-light `}>
+                     <button className=' tracking-wider'> {nav.title}</button>
                   </NavLink>
                ))}
             </div>
@@ -56,9 +57,23 @@ function Header() {
                <Button
                   variant='outlined'
                   sx={{
+                     maxHeight: 30,
+                     fontSize: 12,
+                  }}
+                  startIcon={
+                     <SearchIcon color='primary' sx={{ marginRight: 0, fontSize: 12, Width: 20 }} className='  ' />
+                  }
+                  className='mr-2 max-w-[100px]'
+               >
+                  Search
+               </Button>
+               <Button
+                  variant='outlined'
+                  sx={{
                      borderRadius: '4px',
                      color: 'white',
                      backgroundColor: 'red',
+                     maxHeight: 30,
                      borderColor: 'red',
                      fontSize: '12px',
                      marginRight: '-10px',

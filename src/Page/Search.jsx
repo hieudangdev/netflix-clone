@@ -1,9 +1,10 @@
 import Search from 'Componets/Header/Search/Search';
 import Row from 'Componets/Row/Row';
-import instance from 'instance';
+import instance from 'api/Config/ClientApi';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { apiKey } from 'requests';
+import mediaApi from './../api/modules/mediaApi';
+import tmdbConfigs from 'api/Config/tmdb.config';
 
 function SearchPage() {
    let { q } = useParams();
@@ -12,10 +13,12 @@ function SearchPage() {
    useEffect(() => {
       const fetchApi = async () => {
          setsearchMovies([]);
-         const request = await instance.get(
-            `search/movie?api_key=${apiKey}&language=en-US&query=${q}&page=1&include_adult=false`,
-         );
-         setsearchMovies(request.data.results);
+         const request = await mediaApi.search({
+            mediaType: tmdbConfigs.mediaType.movie,
+            query: q,
+            page: 1,
+         });
+         setsearchMovies(request.response.data.results);
       };
       fetchApi();
    }, [q]);

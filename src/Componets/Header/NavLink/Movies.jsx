@@ -1,16 +1,21 @@
 import Row from 'Componets/Row/Row';
-import instance from 'instance';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import requests from 'requests';
+import mediaApi from './../../../api/modules/mediaApi';
+import tmdbConfigs from './../../../api/Config/tmdb.config';
+import { navheader } from '../Header';
 
 function Movies() {
    const [Movies, setMovies] = useState([]);
 
    useEffect(() => {
       const fetchApi = async () => {
-         const request = await instance.get(requests.fetchTrending);
-         setMovies(request.data.results);
+         const request = await mediaApi.getList({
+            mediaType: tmdbConfigs.mediaType.movie,
+            mediaCategory: tmdbConfigs.mediaCategory.nowplaying,
+            page: 1,
+         });
+         setMovies(request.response.data.results);
       };
       fetchApi();
    }, []);
@@ -18,7 +23,7 @@ function Movies() {
    return (
       <div className=' mt-16 px-[15px] lg:px-[120px]'>
          <div className='w-full'>
-            <Row dataMovies={Movies} title='Phim Lẻ' />
+            <Row dataMovies={Movies} title={navheader[1].title} />
          </div>
       </div>
    );

@@ -34,7 +34,7 @@ const DrawerComp = ({ pages }) => {
             onClose={() => setOpenDrawer(false)}
          >
             <Link to={routes.home}>
-               <button className='w-full py-2 text-[18px] font-extrabold  text-red-500 '>PHIMVIP</button>
+               <button className='w-full py-2 text-[22px] font-extrabold  text-red-500 '>PHIMVIP</button>
             </Link>
             <Divider />
             <List disablePadding>
@@ -60,9 +60,9 @@ const DrawerComp = ({ pages }) => {
                               sx={{ my: 0 }}
                               primary={page.title}
                               primaryTypographyProps={{
-                                 fontSize: 18,
-                                 fontWeight: 'medium',
-                                 letterSpacing: 1,
+                                 fontSize: 16,
+                                 fontWeight: 'light',
+                                 letterSpacing: '0.05em',
                                  pt: 1,
                               }}
                            />

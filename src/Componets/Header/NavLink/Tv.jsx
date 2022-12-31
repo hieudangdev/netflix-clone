@@ -1,16 +1,23 @@
 import Row from 'Componets/Row/Row';
-import instance from 'instance';
+import instance from 'api/Config/ClientApi';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import requests from 'requests';
+import requests from 'api/Config/tmdb.config';
+import tmdbConfigs from './../../../api/Config/tmdb.config';
+import mediaApi from './../../../api/modules/mediaApi';
+import { navheader } from './../Header';
 
 function Tv() {
    const [Movies, setMovies] = useState([]);
 
    useEffect(() => {
       const fetchApi = async () => {
-         const request = await instance.get(requests.fetchNetflixOriginals);
-         setMovies(request.data.results);
+         const request = await mediaApi.getList({
+            mediaType: tmdbConfigs.mediaType.movie,
+            mediaCategory: tmdbConfigs.mediaCategory.upcoming,
+            page: 1,
+         });
+         setMovies(request.response.data.results);
       };
       fetchApi();
    }, []);
@@ -18,7 +25,7 @@ function Tv() {
    return (
       <div className=' mt-16 px-[15px] lg:px-[120px]'>
          <div className='w-full'>
-            <Row dataMovies={Movies} title='Phim Bộ' />
+            <Row dataMovies={Movies} title={navheader[2].title} />
          </div>
       </div>
    );

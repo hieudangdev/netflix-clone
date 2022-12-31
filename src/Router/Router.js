@@ -10,8 +10,8 @@ const routes = {
     home: '/',
     search: '/search/:q',
     searchLink: (q) => `/search/${q}`,
-    profile: '/movie/:id',
-    profileLink: (id) => `/movie/${id}`,
+    detail: '/:mediaType/:mediaId',
+    detailLink: (type, id) => `/${type}/${id}`,
     top: '/top_rated/',
     movies: '/movies/',
     tv: '/tv/',
@@ -21,7 +21,7 @@ const routes = {
 // no login
 const publicRoutes = [
     { path: routes.home, component: Home },
-    { path: routes.profile, component: Profile },
+    { path: routes.detail, component: Profile },
     { path: routes.search, component: SearchPage },
     { path: routes.top, component: TopHot },
     { path: routes.movies, component: Movies },

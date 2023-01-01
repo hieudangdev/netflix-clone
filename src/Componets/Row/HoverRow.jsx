@@ -11,7 +11,7 @@ function HoverRow({ movie }) {
       <div className='absolute inset-x-0 top-8  -bottom-8  z-10 bg-gradient-to-t from-black  to-black/50  opacity-0   transition-all content-none group-hover:top-0 group-hover:bottom-0  group-hover:opacity-100   '>
          <div className='bg-blue-400\ flex h-full w-full flex-col items-start  justify-between p-3 '>
             <div className='text-start '>
-               <Ratings value={movie?.vote_average} size={35} color='success' />
+               <Ratings value={movie?.vote_average} size={35} color='warning' />
             </div>
             <div className='flex w-full justify-center '>
                <Button

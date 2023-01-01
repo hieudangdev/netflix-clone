@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
-function Ratings({ value, color, size }) {
+function Ratings({ value = 0, color, size }) {
    return (
       <div className='relative w-max'>
          <CircularProgress variant='determinate' color={color} value={value * 10} size={size} />

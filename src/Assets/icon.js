@@ -1,4 +1,4 @@
-export const IMDb = ({ width, height, className }) => (
+export const IMDb = ({ width = 30, height = 30, className }) => (
 
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 48 48" width={width} height={height}>
         <path d="M44 13H4c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V17c0-2.2-1.8-4-4-4z" fill="#ffc107"></path>

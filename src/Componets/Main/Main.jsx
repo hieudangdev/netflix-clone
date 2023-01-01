@@ -17,7 +17,6 @@ function Main({ title, mediaType, mediaCategory }) {
       fetchApi();
    }, [mediaType, mediaCategory]);
 
-   console.log(Movies);
    return (
       <div className='w-full'>
          <Row dataMovies={Movies} mediaType={mediaType} title={title} />

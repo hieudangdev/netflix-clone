@@ -15,7 +15,7 @@ function TopHot() {
             mediaCategory: tmdbConfigs.mediaCategory.top_rated,
             page: 1,
          });
-         setMovies(request.response.data);
+         setMovies(request.response.data.results);
       };
       fetchApi();
    }, []);

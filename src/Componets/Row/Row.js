@@ -14,13 +14,14 @@ function Row({ dataMovies = [], title, mediaType }) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [dataMovies])
+    }, [])
 
     return (
         <div>
             <h2 className='mt-12 mb-4 leading-9 border-b border-gray-700 text-title font-semibold text-[20px] uppercase'>{title}</h2>
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 '>
                 {dataMovies?.map((movie, index) => {
+                    
                     return (
                         <Link to={routes.detailLink(mediaType, movie?.id)} key={index} >
                             <Box className='relative bg-[#0a0f1a]  group  font-medium shadow-2xl lg:hover:scale-[1.05] overflow-hidden

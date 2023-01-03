@@ -25,7 +25,7 @@ function Tv() {
    return (
       <div className=' mt-16 px-[15px] lg:px-[120px]'>
          <div className='w-full'>
-            <Row dataMovies={Movies} title={navheader[2].title} />
+            <Row dataMovies={Movies} mediaType={tmdbConfigs.mediaType.movie} title={navheader[2].title} />
          </div>
       </div>
    );

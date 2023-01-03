@@ -38,42 +38,45 @@ const DrawerComp = ({ pages }) => {
             </Link>
             <Divider />
             <List disablePadding>
-               {pages.map((page, index) => (
-                  <ListItemButton
-                     key={index}
-                     sx={{
-                        '&.Mui-selected': {
-                           backgroundColor: 'rgba(25, 118, 210, 0.12)',
-                           color: 'orange',
-                        },
-                        '&.Mui-focusVisible': {
-                           backgroundColor: 'rgba(25, 118, 210, 0.12)',
-                           color: 'orange',
-                        },
-                     }}
-                     selected={selectedIndex === page.tabindex}
-                     onClick={() => setSelectedIndex(page.tabindex)}
-                  >
-                     <ListItemIcon sx={{ color: 'inherit' }}>
-                        <Link to={page.link}>
-                           <ListItemText
-                              sx={{ my: 0 }}
-                              primary={page.title}
-                              primaryTypographyProps={{
-                                 fontSize: 16,
-                                 fontWeight: 'light',
-                                 letterSpacing: '0.05em',
-                                 pt: 1,
-                              }}
-                           />
-                        </Link>
-                     </ListItemIcon>
-                  </ListItemButton>
-               ))}
+               {pages.map(
+                  (page, index) =>
+                     index !== 3 && (
+                        <ListItemButton
+                           key={index}
+                           sx={{
+                              '&.Mui-selected': {
+                                 backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                                 color: 'orange',
+                              },
+                              '&.Mui-focusVisible': {
+                                 backgroundColor: 'rgba(25, 118, 210, 0.12)',
+                                 color: 'orange',
+                              },
+                           }}
+                           selected={selectedIndex === page.tabindex}
+                           onClick={() => setSelectedIndex(page.tabindex)}
+                        >
+                           <ListItemIcon sx={{ color: 'inherit' }}>
+                              <Link to={page.link}>
+                                 <ListItemText
+                                    sx={{ my: 0 }}
+                                    primary={page.title}
+                                    primaryTypographyProps={{
+                                       fontSize: 16,
+                                       fontWeight: 'light',
+                                       letterSpacing: '0.05em',
+                                       pt: 1,
+                                    }}
+                                 />
+                              </Link>
+                           </ListItemIcon>
+                        </ListItemButton>
+                     ),
+               )}
             </List>
          </Drawer>
          <IconButton sx={{ color: 'white', marginLeft: 'auto' }} onClick={() => setOpenDrawer(!openDrawer)}>
-            <MenuIcon color='white' />
+            <MenuIcon color='primary' />
          </IconButton>
       </React.Fragment>
    );

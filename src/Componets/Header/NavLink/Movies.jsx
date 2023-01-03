@@ -23,7 +23,7 @@ function Movies() {
    return (
       <div className=' mt-16 px-[15px] lg:px-[120px]'>
          <div className='w-full'>
-            <Row dataMovies={Movies} title={navheader[1].title} />
+            <Row dataMovies={Movies} mediaType={tmdbConfigs.mediaType.movie} title={navheader[1].title} />
          </div>
       </div>
    );

@@ -23,7 +23,7 @@ function TopHot() {
    return (
       <div className=' mt-16 px-[15px] lg:px-[120px]'>
          <div className='w-full'>
-            <Row dataMovies={Movies} title={navheader[0].title} />
+            <Row dataMovies={Movies} mediaType={tmdbConfigs.mediaType.movie} title={navheader[0].title} />
          </div>
       </div>
    );

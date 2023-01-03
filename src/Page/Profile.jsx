@@ -119,8 +119,9 @@ function Profile() {
                               sx={{
                                  borderRadius: '50px',
                                  marginRight: '15px',
-                                 // color: 'white',
-                                 // borderColor: 'white',
+
+                                 color: '#0288D1',
+                                 borderColor: '#0288D1',
                                  ':hover': {
                                     borderColor: 'red',
                                     color: 'red',

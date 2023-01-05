@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { routes } from 'Router/Router';
-import './header.css';
+import './styleHeader.css';
 import DrawerComp from './DrawerComp';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -36,7 +36,10 @@ export const navheader = [
 
 function Header() {
    return (
-      <header className='fixed top-0  z-50 flex  h-12 w-full   items-center  justify-between  bg-[#05103b] px-4 shadow-lg shadow-gray-700/10 '>
+      <header
+         className='fixed top-0  z-50 flex  h-12 w-full  items-center justify-between  bg-primary/95 px-4
+       text-white shadow-lg shadow-gray-700/10 '
+      >
          <div className=' flex h-full w-full items-center text-[18px] uppercase lg:text-[24px] '>
             <div className='-ml-4 lg:hidden'>
                <DrawerComp pages={navheader} />
@@ -45,15 +48,11 @@ function Header() {
                <Link to={routes.home}>PHIMVIP</Link>
             </div>
 
-            <div className='hidden lg:ml-5  lg:flex'>
+            <div className='hidden  lg:ml-5 lg:flex'>
                {navheader.map(
                   (nav, index) =>
                      index != 4 && (
-                        <NavLink
-                           key={index}
-                           to={nav.link}
-                           className={`border-l border-gray-500  px-4 text-[17px] font-light `}
-                        >
+                        <NavLink key={index} to={nav.link} className={`px-3 text-[17px] font-light `}>
                            <button className=' tracking-wide'> {nav.title}</button>
                         </NavLink>
                      ),
@@ -66,19 +65,7 @@ function Header() {
                <Link to={routes.search} className='lg:hidden'>
                   <SearchIcon color='primary' fontSize='large' className='  ' />
                </Link>
-               <Button
-                  variant='outlined'
-                  className='text-[15px] '
-                  sx={{
-                     borderRadius: '4px',
-                     color: 'white',
-                     backgroundColor: 'red',
-                     maxHeight: 30,
-                     borderColor: 'red',
-                     fontSize: '12px',
-                     marginRight: '-10px',
-                  }}
-               >
+               <Button variant='outlined' size='small' className='hidden border-Red text-[14px] text-Red lg:block'>
                   Login
                </Button>
             </div>

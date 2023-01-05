@@ -10,8 +10,11 @@ module.exports = {
         "Roboto": ["Roboto"],
       },
       colors: {
-        "title": "#ff7420",
-        redcolor: '#eb3349',
+        "Orange": "#ff7420",
+        'Red': '#eb3349',
+        'primary': '#131313',
+        'secondary': '#000000'
+
 
       },
 

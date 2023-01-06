@@ -37,16 +37,20 @@ export const navheader = [
 function Header() {
    return (
       <header
-         className='fixed top-0  z-50 flex  h-12 w-full  items-center justify-between  bg-primary/95 px-4
+         className='fixed top-0  z-50 flex  h-12 w-full  items-center justify-between  bg-primary/95 px-1
        text-white shadow-lg shadow-gray-700/10 '
       >
          <div className=' flex h-full w-full items-center text-[18px] uppercase lg:text-[24px] '>
-            <div className='-ml-4 lg:hidden'>
+            <div className='lg:hidden'>
                <DrawerComp pages={navheader} />
             </div>
-            <div className=' flex cursor-pointer  justify-center  text-[25px]  font-[900] text-red-600  '>
-               <Link to={routes.home}>PHIMVIP</Link>
-            </div>
+
+            <Link
+               to={routes.home}
+               className=' block w-full cursor-pointer text-center  text-[25px] font-[900]  text-Red lg:w-auto'
+            >
+               PHIMVIP
+            </Link>
 
             <div className='hidden  lg:ml-5 lg:flex'>
                {navheader.map(
@@ -63,7 +67,7 @@ function Header() {
          <div className='inline-flex'>
             <div className=' flex'>
                <Link to={routes.search} className='lg:hidden'>
-                  <SearchIcon color='primary' fontSize='large' className='  ' />
+                  <SearchIcon color='primary' className='text-[30px]' />
                </Link>
                <Button variant='outlined' size='small' className='hidden border-Red text-[14px] text-Red lg:block'>
                   Login

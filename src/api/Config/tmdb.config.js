@@ -27,6 +27,7 @@ const requests = {
 const tmdbConfigs = {
     backdropPath,
     posterPath,
+    youtubePath,
     requests,
     mediaCategory,
     mediaType,

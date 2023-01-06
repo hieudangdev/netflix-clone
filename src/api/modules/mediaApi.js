@@ -3,7 +3,7 @@ import PublicClient from './../Config/ClientApi'
 const apikey = process.env.REACT_APP_API_KEY
 const mediaEndpoint = {
     list: ({ mediaType, mediaCategory, page }) => `${mediaType}/${mediaCategory}?api_key=${apikey}&page=${page}`,
-    detail: ({ mediaType, mediaId }) => `${mediaType}/${mediaId}?api_key=${apikey}`,
+    detail: ({ mediaType, mediaId }) => `${mediaType}/${mediaId}?api_key=${apikey}&append_to_response=videos,casts,similar`,
     search: ({ mediaType, query, page }) => `search/${mediaType}?api_key=${apikey}&language=en-US&query=${query}&page=${page}&include_adult=false`,
     listcast: ({ mediaType, mediaId }) => `${mediaType}/${mediaId}/casts?api_key=${apikey}`,
     listsimilar: ({ mediaType, mediaId }) => `${mediaType}/${mediaId}/similar?api_key=${apikey}&language=en-US&page=1`

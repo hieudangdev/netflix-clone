@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import MoreMovies from 'Componets/Profile/MoreMovies';
 import SlickCast from 'Componets/Profile/SlickCast';
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import UpdateIcon from '@mui/icons-material/Update';
@@ -13,41 +12,59 @@ import Images from 'Componets/Image/Images';
 import tmdbConfigs from './../api/Config/tmdb.config';
 import mediaApi from './../api/modules/mediaApi';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import SimilarMovies from './../Componets/Profile/Similar';
+import SlickTrailer from 'Componets/Profile/SlickTrailer';
 
 function Profile() {
    const [infoMovies, setinfoMovies] = useState([]);
    const [genMovies, setgenMovies] = useState([]);
+   const [Casts, setCasts] = useState([]);
+   const [Similar, setSimilar] = useState([]);
+   const [Videos, setVideos] = useState([]);
 
    let { mediaType, mediaId } = useParams();
-   console.log(mediaType, mediaId);
 
    useEffect(() => {
       window.scrollTo(0, 0);
-      const fetchApi = async () => {
-         const request = await mediaApi.getDetail({
+      const GetDetailMedia = async () => {
+         const { response, err } = await mediaApi.getDetail({
             mediaType,
             mediaId,
          });
-         setinfoMovies(request.response.data);
-         setgenMovies(request.response.data.genres);
+
+         if (response) {
+            setCasts(response.data.casts.cast.slice(0, 20));
+            setSimilar(response.data.similar.results.slice(0, 10));
+            setinfoMovies(response.data);
+            setVideos(response.data.videos.results.slice(0, 10));
+            setgenMovies(response.data.genres);
+         }
+
+         if (err) {
+            console.log(err);
+         }
       };
-      fetchApi();
+      GetDetailMedia();
    }, [mediaId, mediaType]);
 
    return (
       <div className=' relative text-white  '>
-         <Images
-            className='-z-30 h-auto w-full object-cover opacity-20 lg:mb-0'
-            src={tmdbConfigs.backdropPath(infoMovies.backdrop_path)}
-            alt=''
-         />
+         {infoMovies.backdrop_path ? (
+            <Images
+               className='-z-10 h-auto w-full object-cover opacity-20 lg:mb-0'
+               src={tmdbConfigs.backdropPath(infoMovies.backdrop_path)}
+               alt=''
+            />
+         ) : (
+            <div className='h-[768px] w-[1366px] bg-primary'></div>
+         )}
 
          <div className=' relative z-20 -mt-[200px] w-full  pl-2 lg:-mt-[680px] '>
             <div className=' grid grid-cols-1 gap-x-2 md:grid-cols-4 lg:grid-cols-4 lg:px-16'>
                <div className='px-10 pt-10   lg:px-5 lg:pt-0 '>
                   <div className='overflow-hidden rounded-2xl shadow-2xl'>
                      <Images
-                        className='block max-w-full   object-cover'
+                        className='block max-w-full   object-cover  '
                         src={tmdbConfigs.posterPath(infoMovies?.poster_path)}
                         alt=''
                      />
@@ -55,6 +72,7 @@ function Profile() {
                   <div className='w-full pt-4 '>
                      <Button
                         variant='contained'
+                        className='bg-Red text-white'
                         sx={{
                            width: 1,
                            backgroundColor: 'red',
@@ -91,20 +109,11 @@ function Profile() {
                         <span className=' ml-2'>{infoMovies?.vote_count}</span>
                      </div>
                   </div>
-                  <div className='mt-5 flex w-full  flex-wrap   justify-between'>
+                  <div className='mt-5 mb-3 flex w-full  flex-wrap   justify-between'>
                      <Button
                         startIcon={<FavoriteBorderIcon />}
                         size='small'
-                        sx={{
-                           borderColor: 'red',
-                           color: 'red',
-                           marginBottom: 2,
-                           ':hover': {
-                              backgroundColor: 'red',
-                              color: 'white',
-                              border: 'none',
-                           },
-                        }}
+                        className='border-Red text-Red hover:bg-Red hover:text-white'
                         variant='outlined'
                      >
                         Add to favorite
@@ -119,7 +128,6 @@ function Profile() {
                               sx={{
                                  borderRadius: '50px',
                                  marginRight: '15px',
-
                                  color: '#0288D1',
                                  borderColor: '#0288D1',
                                  ':hover': {
@@ -134,13 +142,15 @@ function Profile() {
                      </div>
                   </div>
                   <div className='mt-4 text-[18px] font-normal text-white/90 '>{infoMovies?.overview}</div>
-
-                  <SlickCast mediaType={mediaType} mediaId={mediaId} />
+                  <SlickCast infoCast={Casts} />
                </div>
             </div>
          </div>
+         <div className='mt-[100px] px-2 lg:px-[120px]'>
+            <SlickTrailer Videos={Videos} title='Trailer Movie' />
 
-         <MoreMovies />
+            <SimilarMovies Similar={Similar} mediaType={mediaType} />
+         </div>
       </div>
    );
 }

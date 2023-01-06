@@ -76,7 +76,7 @@ const DrawerComp = ({ pages }) => {
             </List>
          </Drawer>
          <IconButton sx={{ color: 'white', marginLeft: 'auto' }} onClick={() => setOpenDrawer(!openDrawer)}>
-            <MenuIcon color='primary' />
+            <MenuIcon color='primary' className='text-[30px]' />
          </IconButton>
       </React.Fragment>
    );

@@ -6,6 +6,8 @@ function Images({ src, className, width, height, ...props }) {
       <img
          src={src || placeholderSrc}
          className={className}
+         width={width}
+         height={height}
          alt={props.alt || ''}
          onError={(e) => (e.target.src = placeholderSrc)}
       />

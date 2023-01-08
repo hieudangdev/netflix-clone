@@ -13,7 +13,9 @@ module.exports = {
         "Orange": "#ff7420",
         'Red': '#F90321',
         'primary': '#131313',
-        'secondary': '#000000'
+        'secondary': '#000000',
+        'Blue': '#0f3fff',
+        'Blue2': '#0f3fff',
 
 
       },

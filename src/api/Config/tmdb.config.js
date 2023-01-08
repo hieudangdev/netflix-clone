@@ -17,6 +17,7 @@ const backdropPath = (imgEndpoint) => `https://image.tmdb.org/t/p/original${imgE
 const posterPath = (imgEndpoint) => `https://image.tmdb.org/t/p/w500${imgEndpoint}`
 
 const youtubePath = (videoId) => `https://www.youtube.com/embed/${videoId}?controls=0`
+const youtubeThumnail = (videoId, size) => `https://img.youtube.com/vi/${videoId}/${size}.jpg`
 
 const requests = {
     fetchTrending: `/trending/all/week?api_key=${apiKey}&language=en-US`,
@@ -26,6 +27,7 @@ const requests = {
 
 const tmdbConfigs = {
     backdropPath,
+    youtubeThumnail,
     posterPath,
     youtubePath,
     requests,

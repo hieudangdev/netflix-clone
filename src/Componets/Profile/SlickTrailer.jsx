@@ -1,13 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { Pagination } from 'swiper';
-import YouTube from 'react-youtube';
+import tmdbConfigs from 'api/Config/tmdb.config';
+import Images from 'Componets/Image/Images';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 function SlickTrailer({ Videos, title }) {
    const swiperRef = useRef(null);
@@ -46,27 +47,19 @@ function SlickTrailer({ Videos, title }) {
             >
                {Videos.map((video, index) => {
                   return (
-                     <SwiperSlide key={index} className='overflow-hidden rounded-lg'>
-                        <YouTube
-                           videoId={video.key}
-                           className=''
-                           opts={{
-                              width: '100%',
-                              height: '200px',
-                              playerVars: {
-                                 controls: 0,
-                                 cc_load_policy: 0,
-                                 fs: 0,
-                                 modestbranding: true,
-                                 iv_load_policy: 0,
-                                 modestbranding: 0,
-                                 rel: 0,
-                                 showinfo: 0,
-                              },
-                           }}
+                     <SwiperSlide key={index} className='overflow-hidden '>
+                        <img
+                           src={tmdbConfigs.youtubeThumnail(video.key, 'maxresdefault')}
+                           alt='trailer'
+                           className='rounded- h-[230px] w-[369px] rounded-lg '
+                           onError={(e) => (e.target.src = tmdbConfigs.youtubeThumnail(video.key, 'mqdefault'))}
                         />
-                        {/* <p>{video.name}</p> */}
-                        <p className='block bg-secondary/30 text-center text-[15px]'>{video.type}</p>
+                        <div className='absolute inset-0 flex items-center justify-center rounded-lg border  opacity-0 content-none hover:border-Orange  hover:opacity-100'>
+                           <PlayArrowIcon className=' text-[50px]' />
+                        </div>
+                        <p className='absolute  left-2 top-2 rounded-full bg-secondary/50 px-2  text-center text-[12px] leading-4  text-Orange '>
+                           {video.type}
+                        </p>
                      </SwiperSlide>
                   );
                })}

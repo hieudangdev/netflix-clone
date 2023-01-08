@@ -47,6 +47,10 @@ function Profile() {
       GetDetailMedia();
    }, [mediaId, mediaType]);
 
+   const DataMovie = infoMovies.release_date;
+   // const DateMovie = DataMovie.split('-');
+   // console.log(DateMovie);
+
    return (
       <div className=' relative text-white  '>
          {infoMovies.backdrop_path ? (
@@ -90,26 +94,29 @@ function Profile() {
                   <div className=' text-[45px] leading-[45px]'>{infoMovies?.title}</div>
                   <div className=' mt-2 text-[24px] font-normal text-white/80 '>{infoMovies?.original_title}</div>
                   <div className=' text-[15px] font-medium leading-[16px]'>
-                     <div className='mt-1 flex h-[35px] flex-1  items-center  '>
+                     <div className='mt-1 flex h-[35px] w-full  items-center'>
                         <p className='h-[22px] rounded-md border border-orange-600 px-1 text-[13px] font-semibold leading-[22px] text-orange-600'>
                            IMDb
                         </p>
                         <div className='px-2  '>{Math.floor(infoMovies.vote_average * 10) / 10 || 0}</div>
                      </div>
-                     <div className='mt-2'>
+                     <div className=' mt-2 flex  items-center font-normal'>
                         <UpdateIcon color='success' />
-                        <span className='ml-2 '>{infoMovies?.release_date}</span>
+                        <p className='mr-2 ml-2 text-white/70'>Release Date</p>
+                        <span className='ml-2 font-medium '>{DataMovie}</span>
                      </div>
-                     <div className='mt-2 '>
+                     <div className='mt-2 flex items-center font-normal '>
                         <RemoveRedEyeOutlinedIcon color='warning' />
-                        <span className=' ml-2'>{infoMovies?.popularity}</span>
+                        <p className='mr-7 ml-2 text-white/70'>Popularity</p>
+                        <span className=' ml-2 font-medium'>{infoMovies?.popularity}</span>
                      </div>
-                     <div className=' mt-2'>
+                     <div className=' mt-2 flex items-center font-normal'>
                         <ThumbUpOffAltIcon color='info' />
-                        <span className=' ml-2'>{infoMovies?.vote_count}</span>
+                        <p className='mr-[60px] ml-2 text-white/70'>Likes</p>
+                        <span className=' ml-2 font-medium'>{infoMovies?.vote_count}</span>
                      </div>
                   </div>
-                  <div className='mt-5 mb-3 flex w-full  flex-wrap   justify-between'>
+                  <div className='mt-5 mb-3 w-full justify-between    lg:flex'>
                      <Button
                         startIcon={<FavoriteBorderIcon />}
                         size='small'
@@ -124,17 +131,7 @@ function Profile() {
                               key={index}
                               variant='outlined'
                               size='small'
-                              color='primary'
-                              sx={{
-                                 borderRadius: '50px',
-                                 marginRight: '15px',
-                                 color: '#0288D1',
-                                 borderColor: '#0288D1',
-                                 ':hover': {
-                                    borderColor: 'red',
-                                    color: 'red',
-                                 },
-                              }}
+                              className='mr-[15px] mt-4 rounded-full  border-blue-600 text-[14px] font-normal capitalize  text-blue-600'
                            >
                               {genre.name}
                            </Button>

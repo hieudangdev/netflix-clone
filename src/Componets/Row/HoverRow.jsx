@@ -36,8 +36,8 @@ function HoverRow({ movie }) {
                      {movie?.vote_count}
                   </div>
                   <div>
-                        <UpdateIcon color='success' />
-                        {movie?.release_date}
+                     <UpdateIcon color='success' />
+                     {movie?.release_date}
                   </div>
                </div>
                <div className=''>

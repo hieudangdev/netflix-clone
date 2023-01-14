@@ -82,9 +82,12 @@ function Header() {
          <div className=' flex h-full w-full items-center text-[18px] uppercase lg:text-[24px] '>
             <div className='lg:hidden'>
                <DrawerComp pages={navheader} User={User} />
-            </div>f
+            </div>
 
-            <Link to={routes.home} className=' block w-full cursor-pointer text-center  text-[25px] font-[900]  text-Red lg:w-auto'>
+            <Link
+               to={routes.home}
+               className=' block w-full cursor-pointer text-center  text-[25px] font-[900]  text-Red lg:w-auto'
+            >
                PHIMVIP
             </Link>
 
@@ -194,7 +197,11 @@ function Header() {
                   </>
                ) : (
                   <Link to={routes.accounts}>
-                     <Button variant='outlined' size='small' className='hidden border-Red text-[14px] text-Red lg:block'>
+                     <Button
+                        variant='outlined'
+                        size='small'
+                        className='hidden border-Red text-[14px] text-Red lg:block'
+                     >
                         Login
                      </Button>
                   </Link>

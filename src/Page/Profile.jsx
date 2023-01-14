@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import 'slick-carousel/slick/slick-theme.css'
-import 'slick-carousel/slick/slick.css'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
-import UpdateIcon from '@mui/icons-material/Update'
-import { Button } from '@mui/material'
-import Images from 'Componets/Image/Images'
-import SlickCast from 'Componets/Profile/SlickCast'
-import SlickTrailer from 'Componets/Profile/SlickTrailer'
-import tmdbConfigs from './../api/Config/tmdb.config'
-import mediaApi from './../api/modules/mediaApi'
-import SimilarMovies from './../Componets/Profile/Similar'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import UpdateIcon from '@mui/icons-material/Update';
+import { Button } from '@mui/material';
+import Images from 'Componets/Image/Images';
+import SlickCast from 'Componets/Profile/SlickCast';
+import SlickTrailer from 'Componets/Profile/SlickTrailer';
+import tmdbConfigs from './../api/Config/tmdb.config';
+import mediaApi from './../api/modules/mediaApi';
+import SimilarMovies from './../Componets/Profile/Similar';
 
 function Profile() {
    const [infoMovies, setinfoMovies] = useState([]);
@@ -52,7 +52,11 @@ function Profile() {
    return (
       <div className=' relative text-white  '>
          {infoMovies.backdrop_path ? (
-            <Images className='-z-10 h-auto w-full object-cover opacity-20 lg:mb-0' src={tmdbConfigs.backdropPath(infoMovies.backdrop_path)} alt='' />
+            <Images
+               className='-z-10 h-auto w-full object-cover opacity-20 lg:mb-0'
+               src={tmdbConfigs.backdropPath(infoMovies.backdrop_path)}
+               alt=''
+            />
          ) : (
             <div className='h-[768px] w-[1366px] bg-primary'></div>
          )}
@@ -61,7 +65,11 @@ function Profile() {
             <div className=' grid grid-cols-1 gap-x-2 md:grid-cols-4 lg:grid-cols-4 lg:px-16'>
                <div className='px-10 pt-10   lg:px-5 lg:pt-0 '>
                   <div className='overflow-hidden rounded-2xl shadow-2xl'>
-                     <Images className='block max-w-full   object-cover  ' src={tmdbConfigs.posterPath(infoMovies?.poster_path || '')} alt='' />
+                     <Images
+                        className='block max-w-full   object-cover  '
+                        src={tmdbConfigs.posterPath(infoMovies?.poster_path || '')}
+                        alt=''
+                     />
                   </div>
                   <div className='w-full pt-4 '>
                      <Button
@@ -81,7 +89,9 @@ function Profile() {
                   <div className=' mt-2 text-[24px] font-normal text-white/80 '>{infoMovies?.original_title}</div>
                   <div className=' text-[15px] font-medium leading-[16px]'>
                      <div className='mt-1 flex h-[35px] w-full  items-center'>
-                        <p className='h-[22px] rounded-md border border-orange-600 px-1 text-[13px] font-semibold leading-[22px] text-orange-600'>IMDb</p>
+                        <p className='h-[22px] rounded-md border border-orange-600 px-1 text-[13px] font-semibold leading-[22px] text-orange-600'>
+                           IMDb
+                        </p>
                         <div className='px-2  '>{Math.floor(infoMovies.vote_average * 10) / 10 || 0}</div>
                      </div>
                      <div className=' mt-2 flex  items-center font-normal'>
@@ -101,12 +111,22 @@ function Profile() {
                      </div>
                   </div>
                   <div className='mt-5 mb-3 w-full justify-between  lg:flex'>
-                     <Button startIcon={<FavoriteBorderIcon />} size='small' className='border-Red text-Red hover:bg-Red hover:text-white' variant='outlined'>
+                     <Button
+                        startIcon={<FavoriteBorderIcon />}
+                        size='small'
+                        className='border-Red text-Red hover:bg-Red hover:text-white'
+                        variant='outlined'
+                     >
                         Add to favorite
                      </Button>
                      <div>
                         {genMovies.map((genre, index) => (
-                           <Button key={index} variant='outlined' size='small' className='mr-[15px] mt-4 rounded-full border-blue-600  text-[14px] font-normal capitalize text-blue-600  lg:mt-0'>
+                           <Button
+                              key={index}
+                              variant='outlined'
+                              size='small'
+                              className='mr-[15px] mt-4 rounded-full border-blue-600  text-[14px] font-normal capitalize text-blue-600  lg:mt-0'
+                           >
                               {genre.name}
                            </Button>
                         ))}

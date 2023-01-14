@@ -1,9 +1,10 @@
 import Home from "Page/Home"
 import Profile from "Page/Profile"
 import SearchPage from "Page/Search"
-import TopHot from "Componets/Header/NavLink/TopHot"
-import Movies from "Componets/Header/NavLink/Movies"
-import Tv from "Componets/Header/NavLink/Tv"
+import TopRate from '../Componets/Header/NavLink/TopRate'
+import NowPlaying from './../Componets/Header/NavLink/NowPlaying'
+import UpComing from './../Componets/Header/NavLink/UpComing'
+import Account from './../Page/Accounts'
 
 
 const routes = {
@@ -12,9 +13,10 @@ const routes = {
     searchLink: (q) => `/search/${q}`,
     detail: '/:mediaType/:mediaId',
     detailLink: (type, id) => `/${type}/${id}`,
-    top: '/top_rated/',
-    movies: '/movies/',
-    tv: '/tv/',
+    top: '/toprated/',
+    nowplaying: '/nowplaying/',
+    upcoming: '/upcoming/',
+    accounts: '/accounts/',
 
 }
 
@@ -23,9 +25,10 @@ const publicRoutes = [
     { path: routes.home, component: Home },
     { path: routes.detail, component: Profile },
     { path: routes.search, component: SearchPage },
-    { path: routes.top, component: TopHot },
-    { path: routes.movies, component: Movies },
-    { path: routes.tv, component: Tv },
+    { path: routes.top, component: TopRate },
+    { path: routes.nowplaying, component: NowPlaying },
+    { path: routes.upcoming, component: UpComing },
+    { path: routes.accounts, component: Account },
 
 ]
 export { routes, publicRoutes }

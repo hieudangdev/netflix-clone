@@ -1,14 +1,12 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Images from 'Componets/Image/Images';
-import tmdbConfigs from './../../api/Config/tmdb.config';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-import { Navigation, Pagination } from 'swiper';
+import tmdbConfigs from './../../api/Config/tmdb.config';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -49,10 +47,7 @@ function SlickCast({ infoCast }) {
                   return (
                      <SwiperSlide key={index} className='  flex flex-col items-center'>
                         <div className='h-[100px] w-[100px]'>
-                           <Images
-                              src={tmdbConfigs.posterPath(cast.profile_path)}
-                              className='block h-full w-full rounded-full object-cover'
-                           />
+                           <Images src={tmdbConfigs.posterPath(cast.profile_path)} className='block h-full w-full rounded-full object-cover' />
                         </div>
                         <span className='  mt-1 text-[14px] '>{cast.original_name}</span>
                         <p className=' text-[13px] font-light leading-3'>{cast.character}</p>

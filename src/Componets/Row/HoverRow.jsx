@@ -14,15 +14,7 @@ function HoverRow({ movie }) {
                <Ratings value={movie?.vote_average} size={35} color='warning' />
             </div>
             <div className='flex w-full justify-center '>
-               <Button
-                  variant='outlined'
-                  sx={{
-                     borderColor: 'red',
-                     color: 'red',
-                  }}
-                  color='error'
-                  size='small'
-               >
+               <Button variant='outlined' className='bg-Red text-Red' color='error' size='small'>
                   More
                </Button>
             </div>

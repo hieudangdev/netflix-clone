@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
-import {
-   Button,
-   Divider,
-   Drawer,
-   IconButton,
-   List,
-   ListItem,
-   ListItemButton,
-   ListItemIcon,
-   ListItemText,
-} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
+import { Divider, Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from 'Router/Router';
-const DrawerComp = ({ pages }) => {
+const DrawerComp = ({ pages, User }) => {
    const [openDrawer, setOpenDrawer] = useState(false);
    const [selectedIndex, setSelectedIndex] = useState(0);
    const handleListItemSelected = (e, index) => setSelectedIndex(index);
@@ -34,8 +23,9 @@ const DrawerComp = ({ pages }) => {
             onClose={() => setOpenDrawer(false)}
          >
             <Link to={routes.home}>
-               <button className='w-full py-2 text-[22px] font-extrabold  text-red-500 '>PHIMVIP</button>
+               <button className='w-full py-2 text-[22px] font-extrabold  text-Red '>PHIMVIP</button>
             </Link>
+            {User && <p>{User.displayName}</p>}
             <Divider />
             <List disablePadding>
                {pages.map(

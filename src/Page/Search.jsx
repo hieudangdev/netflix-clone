@@ -1,9 +1,9 @@
-import Row from 'Componets/Row/Row';
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import mediaApi from './../api/modules/mediaApi';
 import tmdbConfigs from 'api/Config/tmdb.config';
-import useDebounce from './../Hook/useDebounce';
+import Row from 'Componets/Row/Row';
+import useDebounce from 'Hook/useDebounce';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import mediaApi from './../api/modules/mediaApi';
 
 function SearchPage() {
    const navigate = useNavigate();
@@ -23,8 +23,6 @@ function SearchPage() {
       };
       fetchApi();
    }, [debouncedvalue]);
-
-   console.log(debouncedvalue);
 
    return (
       <div className='mt-[60px] px-[15px] pb-[200px] lg:mt-[100px] lg:px-[120px]'>

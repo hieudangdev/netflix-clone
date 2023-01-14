@@ -1,7 +1,6 @@
 const apiKey = '555dd368605c297c15840de44d6429b9'
 const mediaType = {
     movie: "movie",
-    tv: "tv"
 }
 
 const mediaCategory = {

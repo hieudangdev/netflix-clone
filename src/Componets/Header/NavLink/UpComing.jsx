@@ -1,13 +1,10 @@
-import Row from 'Componets/Row/Row';
-import instance from 'api/Config/ClientApi';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import requests from 'api/Config/tmdb.config';
-import tmdbConfigs from './../../../api/Config/tmdb.config';
-import mediaApi from './../../../api/modules/mediaApi';
-import { navheader } from './../Header';
+import Row from 'Componets/Row/Row'
+import { useEffect, useState } from 'react'
+import tmdbConfigs from '../../../api/Config/tmdb.config'
+import mediaApi from '../../../api/modules/mediaApi'
+import { navheader } from '../Header'
 
-function Tv() {
+function UpComing() {
    const [Movies, setMovies] = useState([]);
 
    useEffect(() => {
@@ -31,4 +28,4 @@ function Tv() {
    );
 }
 
-export default Tv;
+export default UpComing;

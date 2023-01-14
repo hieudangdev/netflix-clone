@@ -1,14 +1,11 @@
-import { Button } from '@mui/material'
-import Images from 'Componets/Image/Images'
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { routes } from 'Router/Router'
-import HoverRow from './HoverRow'
-import { Box } from '@mui/material'
-import tmdbConfigs from './../../api/Config/tmdb.config'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
 import StarIcon from '@mui/icons-material/Star'
+import { Box, Button } from '@mui/material'
+import Images from 'Componets/Image/Images'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { routes } from 'Router/Router'
+import tmdbConfigs from './../../api/Config/tmdb.config'
 
 
 
@@ -58,7 +55,8 @@ function Row({ dataMovies = [], title, mediaType }) {
                 }
             </div >
             <div className='w-full text-end  mt-10 '>
-                <Button variant='outlined' size='small' href={routes.movies} className='text-Red border-Red'  > View more... </Button></div>
+                <Button variant='outlined' size='small' className='text-Red border-Red'  > View more... </Button>
+            </div>
 
         </div >
     )

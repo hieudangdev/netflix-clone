@@ -1,14 +1,13 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import React, { useRef } from 'react';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { useRef } from 'react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import tmdbConfigs from 'api/Config/tmdb.config';
-import Images from 'Componets/Image/Images';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import tmdbConfigs from 'api/Config/tmdb.config'
 
 function SlickTrailer({ Videos, title }) {
    const swiperRef = useRef(null);
